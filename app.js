@@ -12,7 +12,7 @@
   var routes        = require('./routes'); 
 
   var app = express();
-  var port = conf.get('port') || process.env.PORT;
+  var port = process.env.PORT || conf.get('port');
 
   app.set('port', port);
   app.set('views', path.join(__dirname, 'views'));
