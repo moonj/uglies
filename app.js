@@ -99,7 +99,7 @@
     debug: true
   }));
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(session({secret: 'fatbay'}));
+  app.use(session({secret: 'fatbay', saveUninitialized: false, resave: false}));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(multer({
