@@ -17,15 +17,19 @@
 
   var SALT_WORK_FACTOR = 10;
 
+
+  var app = express();
+  var port = process.env.PORT || conf.get('port');
+
+  var local_db = conf.get('db') || 'db',
+      local_db_uri =  'mongodb://localhost:' + 27017 + '/' + local_db,
+      db_uri = process.env.MONGOLAB_URI || local_db_uri,
+      secret = conf.get('secret') || 'fatbay';
   mongoose.connect('mongodb://localhost/uglies');
   var db = mongoose.connection;
   db.once('open', function() {
     console.log('connected to db');
   });
-
-  var app = express();
-  var port = process.env.PORT || conf.get('port');
-
 
   var userSchema  = mongoose.Schema({
     username: { type: String, required: true, unique: true},
