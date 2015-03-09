@@ -1,0 +1,33 @@
+<div class="header">
+  {{#if itsYou}}
+  <h1>Your Uglie</h1>
+  {{else}}
+  <h1>{{username}}'s Uglie</h1>
+  {{/if}}
+</div>
+<div class="container">
+  <a href="/uglie/add">
+  </a>
+  <div class="card">
+    <h2>{{uglie.name}}</h2>
+    <img src="/uploads/{{uglie.path}}">
+    <p>Likes: {{uglie.likes}}</p>
+    <p class="id" style="display: none;">{{uglie.id}}</p>
+  </div>
+  <div class="buttons">
+  {{#if itsYou}}
+    <div class="button delete">
+      Delete
+    </div>
+  {{else}}
+    <div class="button like">
+      Like
+    </div>
+    <div class="button trade">
+      Trade
+    </div>
+  {{/if}}
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/uglie.js"></script>

@@ -11,17 +11,15 @@
       mongodb       = require('mongodb'),
       mongoose      = require('mongoose'),
       bcrypt        = require('bcrypt'),
-      session       = require('express-session');
+      session       = require('express-session'),
+      models        = require('./models');
 
   var routes        = require('./routes'); 
-
-  var SALT_WORK_FACTOR = 10;
-
 
   var app = express();
   var port = process.env.PORT || conf.get('port');
 
-  var local_db = conf.get('db') || 'db',
+  var local_db = conf.get('db') || 'uglies',
       local_db_uri =  'mongodb://localhost:' + 27017 + '/' + local_db,
       db_uri = process.env.MONGOLAB_URI || local_db_uri,
       secret = conf.get('secret') || 'fatbay';
@@ -31,54 +29,19 @@
     console.log('connected to db');
   });
 
-  var userSchema  = mongoose.Schema({
-    username: { type: String, required: true, unique: true},
-    email: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
-  });
-
-  userSchema.pre('save', function(next) {
-    var user = this;
-    if(!user.isModified('password')) return next();
-
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-      if(err) return next(err);
-
-      bcrypt.hash(user.password, salt, function(err, hash) {
-        if(err) return next(err);
-        user.password = hash;
-        next();
-      });
-    });
-  });
-
-  userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-      if(err) return cb(err);
-      cb(null, isMatch);
-    });
-  };
-
-  var User = mongoose.model('User', userSchema);
-  var user = new User({ username: 'jay', email: 'jaymoon@stanford.edu', password: 'eh'});
-  user.save(function(err) {
-    if(err) console.log(err);
-    else console.log('user: ' + user.username + ' saved.');
-  });
-
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+    models.User.findById(id, function(err, user) {
       done(err, user);
     });
   });
 
   passport.use(new LocalStrategy(
     function(username, password, done) {
-      User.findOne({username: username}, function(err, user) {
+      models.User.findOne({username: username}, function(err, user) {
         if(err) return done(err);
         if(!user) return done(null, false, {message: 'Unknown user ' + username});
         user.comparePassword(password, function(err, isMatch) {
@@ -121,14 +84,34 @@
 
   // ROUTES
 
-  app.get('/', routes.index);
-  app.post('/add', routes.uglies.add);
-  app.get('/feed', routes.feed);
-  app.get('/uglie/:id', routes.uglies.uglie);
+  var isAuthenticated = function(req, res, next) {
+    if(req.isAuthenticated()) return next();
+    console.log('redirecting...');
+    res.redirect('/login');
+  }
+
+  app.get('/', isAuthenticated, routes.index);
+
+  app.get('/login', routes.users.login);
+  app.post('/login', passport.authenticate(
+    'local', {failureRedirect: '/login'}), routes.users.postLogin);
+  app.get('/signup', routes.users.signup);
+  app.post('/signup', routes.users.postSignup);
+  app.get('/logout', routes.users.logout);
+
+  app.get('/feed', isAuthenticated, routes.feed);
+  app.get('/uglie/add', isAuthenticated, routes.uglies.add);
+  app.post('/uglie/add', isAuthenticated, routes.uglies.postAdd);
+  app.get('/uglie/:id', isAuthenticated, routes.uglies.uglie);
+  app.delete('/uglie/:id', routes.uglies.deleteUglie);
+  app.post('/uglie/:id/like', routes.uglies.like);
+  
+  app.get('/user/:id', routes.users.user);
+  app.get('/friends', routes.users.friends);
 
   // RUN SERVER
 
-  var server = app.listen(app.get('port'), function() {
+  app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
   });
 })();

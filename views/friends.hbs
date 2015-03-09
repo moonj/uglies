@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="nav-button right">
+    <a href="/">Home</a>
+  </div>
+  <h1>Friends</h1>
+</div>
+<div class="container">
+  <ul class="friends">
+    {{#users}}
+    <li><a href="/user/{{this.id}}">{{this.username}}</a></li>
+    {{/users}}
+  </ul>
+</div>

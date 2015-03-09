@@ -1,12 +1,14 @@
 body {
   margin: 0px;
-  font-family: "Avenir", "Helvetica Neue", "Helvetica", sans-serif; }
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif;
+  background-color: #6D1985; }
 
 .header {
   position: fixed;
   width: 100%;
-  padding: 0.8em 0em;
-  background-color: #6217a2;
+  padding: 0.8em 0em 1.6em 0em;
+  background: linear-gradient(to bottom, #6d1985 0%, rgba(109, 25, 133, 0) 100%);
+  /* W3C */
   color: #fff;
   text-align: center;
   z-index: 999; }
@@ -15,12 +17,36 @@ body {
     margin: 0px;
     padding: 0px;
     font-weight: 500; }
+  .header .nav-button {
+    position: absolute;
+    color: white;
+    font-size: 18px; }
+    .header .nav-button a {
+      text-decoration: none;
+      color: white; }
+    .header .nav-button.left {
+      left: 10px; }
+    .header .nav-button.right {
+      right: 10px; }
+
+.friends {
+  margin: 0px 16px 0px 16px;
+  padding: 0px;
+  position: static; }
+  .friends li {
+    margin: 0px 0px 20px 0px;
+    list-style-type: none; }
+    .friends li a {
+      color: white;
+      text-decoration: none; }
 
 .container {
   font-size: 18px;
-  padding: 2.6em 0em 0em 0em;
-  color: black;
+  padding: 3.2em 0em 0em 0em;
+  color: white;
   width: 100%;
+  height: 100%;
+  box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden; }
 
@@ -71,3 +97,117 @@ ul {
     padding: 0px;
     margin: 0px;
     width: 100%; }
+
+.uglie {
+  width: 41%;
+  background-color: #fff;
+  margin: 0% 0% 6% 6%;
+  border-radius: 6px;
+  padding: 4px 8px;
+  float: left;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8); }
+  .uglie h2 {
+    color: #6217a2;
+    margin: 4px 0px 8px 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-weight: 700; }
+  .uglie img {
+    width: 100%;
+    margin-bottom: 4px; }
+
+.camera {
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  margin-left: -25px;
+  position: absolute;
+  bottom: 20px;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 40px;
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8); }
+  .camera img {
+    position: relative;
+    top: 12px;
+    width: 30px; }
+
+.card {
+  width: 90%;
+  margin: 0px auto;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #6D1985;
+  border-radius: 6px; }
+  .card img {
+    width: 100%; }
+  .card h2 {
+    margin: 0px 0px 8px 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-weight: 600; }
+  .card p {
+    margin: 10px 0px 0px 0px;
+    padding: 0px; }
+
+.buttons {
+  width: 90%;
+  margin: 0px auto; }
+  .buttons .button {
+    margin-top: 14px;
+    background-color: #9450A7;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    float: left; }
+    .buttons .button.like {
+      width: 48%;
+      margin-right: 4%; }
+    .buttons .button.trade {
+      width: 48%; }
+
+.form-add {
+  width: 90%;
+  margin: 0px auto;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #6D1985;
+  border-radius: 6px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); }
+  .form-add .uglie-name {
+    -webkit-appearance: none;
+    border: none;
+    background-color: transparent;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 22px;
+    color: #6D1985;
+    font-weight: 600; }
+  .form-add #file-upload {
+    width: 100%;
+    height: 400px;
+    -webkit-appearance: none;
+    border: 0px;
+    background: #E9E3F2;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif;
+    color: #6D1985;
+    font-size: 18px;
+    font-weight: 600; }
+  .form-add #submit {
+    width: 100%;
+    -webkit-appearance: none;
+    border: 0px;
+    margin: 10px 0px 4px 0px;
+    padding: 10px;
+    color: white;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    background: #6D1985;
+    border-radius: 3px; }

@@ -1,10 +1,32 @@
 <div class="header">
+  <div class="nav-button left">
+    <a href="/friends">
+      Friends
+    </a>
+  </div>
+  {{#if isYou}}
+  <div class="nav-button right">
+    <a href="/logout">
+      Logout
+    </a>
+  </div>
+  {{/if}}
   <h1>{{title}}</h1>
 </div>
 <div class="container">
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" class="photo-upload" name="photo" accept="image/*" capture="camera">
-    <br/>
-    <input type="submit" value="Upload Image" name="submit">
-  </form>
+  {{#if isYou}}
+  <a href="/uglie/add">
+    <div class="camera">
+        <img src="/img/camera.png">
+    </div>
+  </a>
+  {{/if}}
+  {{#uglies}}
+  <a href="/uglie/{{this.id}}">
+    <div class="uglie">
+      <h2>{{this.name}}</h2>
+      <img src="/uploads/{{this.path}}">
+    </div>
+  </a>
+  {{/uglies}}
 </div>
