@@ -25,7 +25,7 @@
       local_db_uri =  'mongodb://localhost:' + 27017 + '/' + local_db,
       db_uri = process.env.MONGOLAB_URI || local_db_uri,
       secret = conf.get('secret') || 'fatbay';
-  mongoose.connect('mongodb://localhost/uglies');
+  mongoose.connect(db_uri);
   var db = mongoose.connection;
   db.once('open', function() {
     console.log('connected to db');
