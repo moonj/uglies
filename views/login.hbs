@@ -2,9 +2,10 @@
   <h1>Login</h1>
 </div>
 <div class="container">
-  <form action="/login" method="post">
-    <input type="text" name="username"><br/>
-    <input type="password" name="password"><br/>
-    <input type="submit" value="Login" name="submit">
+  <form id="user" action="/login" method="post">
+    <input type="text" name="username" placeholder="Username"><br/>
+    <input type="password" name="password" placeholder="Password"><br/>
+    <input id="submit" type="submit" value="Login" name="submit">
   </form>
+    <a class="signup-link" href="/signup">Signup here</a>
 </div>

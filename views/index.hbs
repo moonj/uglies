@@ -28,5 +28,9 @@
       <img src="/uploads/{{this.path}}">
     </div>
   </a>
+  {{else}}
+    {{#if isYou}}
+      <p class="onboard">You don't have any uglies yet! <br/><br/> Click the camera button below to create your first one.</p>
+    {{/if}}
   {{/uglies}}
 </div>

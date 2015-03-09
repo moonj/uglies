@@ -26,7 +26,7 @@ exports.postSignup = function(req, res) {
     if(err) console.log(err);
     else console.log('user: ' + user.username + ' saved');
   });
-  res.redirect('/signup');
+  res.redirect('/login');
 }
 
 exports.friends = function(req, res) {
