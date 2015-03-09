@@ -1,4 +1,5 @@
 fs            = require('fs');
+
 exports.index = function(req, res) {
   var data = {
     title: "Take an Uglie"
