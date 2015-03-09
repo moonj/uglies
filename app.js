@@ -122,8 +122,9 @@
   // ROUTES
 
   app.get('/', routes.index);
-  app.post('/upload', routes.upload);
+  app.post('/add', routes.uglies.add);
   app.get('/feed', routes.feed);
+  app.get('/uglie/:id', routes.uglies.uglie);
 
   // RUN SERVER
 

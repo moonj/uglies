@@ -1,4 +1,6 @@
-fs            = require('fs');
+var fs            = require('fs');
+exports.users     = require('./users.js');
+exports.uglies    = require('./uglies.js');
 
 exports.index = function(req, res) {
   var data = {
