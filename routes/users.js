@@ -41,7 +41,14 @@ exports.friends = function(req, res) {
 
 exports.user = function(req, res) {
   var user = models.User.findById(req.params.id).exec(function(err, user) {
-    if(err) res.redirect('/');
+    if(err) {
+      res.redirect('/');
+      return;
+    }
+    if(!req.user) {
+      res.redirect('/');
+      return;
+    }
     if(user.username == req.user.username) res.redirect('/');
     var uglies = models.Uglie.find({user_id: req.params.id}).exec(function(err, uglies) {
       if(err) res.redirect('/');
