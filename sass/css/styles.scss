@@ -145,13 +145,19 @@ ul {
     color: rgba(98, 23, 162, 1);
     margin: 4px 0px 8px 0px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
   }
 
   img {
     width: 100%;
     margin-bottom: 4px;
+  }
+
+  p {
+    margin: 3px;
+    color: $brand;
+    font-size: 14px;
   }
 }
 

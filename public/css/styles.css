@@ -111,11 +111,15 @@ ul {
     color: #6217a2;
     margin: 4px 0px 8px 0px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700; }
   .uglie img {
     width: 100%;
     margin-bottom: 4px; }
+  .uglie p {
+    margin: 3px;
+    color: #6D1985;
+    font-size: 14px; }
 
 .camera {
   width: 50px;
