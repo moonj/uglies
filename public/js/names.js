@@ -53,9 +53,16 @@ var nouns = [
   'Becca'
 ];
 
-var name = adjectives[Math.floor(Math.random() * adjectives.length)] + ' ' + nouns[Math.floor(Math.random() * nouns.length)];
+function generateName() {
+  return adjectives[Math.floor(Math.random() * adjectives.length)] + ' ' + nouns[Math.floor(Math.random() * nouns.length)];
+}
 
-$('.uglie-name').val(name);
+function setName() {
+  $('.uglie-name').val(generateName());
+}
+
+setName();
+
 $('#file-upload').click(function() {
   $('.photo-upload').click();
 });
@@ -74,4 +81,8 @@ function readURL(input) {
 
 $('.photo-upload').change(function() {
   readURL(this);
+});
+
+$('#refresh').click(function(e) {
+  setName();
 });

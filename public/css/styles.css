@@ -198,6 +198,8 @@ form {
     font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 22px;
     color: #6D1985;
+    padding: 0px;
+    margin: 0px;
     font-weight: 600; }
   .form-add #file-upload {
     width: 100%;
@@ -220,6 +222,10 @@ form {
     font-size: 16px;
     background: #6D1985;
     border-radius: 3px; }
+  .form-add #refresh {
+    display: block;
+    padding: 0px;
+    font-size: 16px; }
 
 .signup-link {
   width: 100%;

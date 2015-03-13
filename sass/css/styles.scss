@@ -263,6 +263,8 @@ form {
     font-family: $font;
     font-size: 22px;
     color: $brand;
+    padding: 0px;
+    margin: 0px;
     font-weight: 600;
   }
 
@@ -289,6 +291,12 @@ form {
     font-size: 16px;
     background: $brand;
     border-radius: 3px;
+  }
+
+  #refresh {
+    display: block;
+    padding: 0px;
+    font-size: 16px;
   }
 }
 
