@@ -34,9 +34,10 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 var User = mongoose.model('User', userSchema);
 
 var uglieSchema = mongoose.Schema({
-  user_id: {type: mongoose.Schema.Types.ObjectId},
+  _creator: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  _owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   name: {type: String},
-  likes: {type: Number},
+  likes: {type: [mongoose.Schema.Types.ObjectId]},
   path: {type: String}
 });
 

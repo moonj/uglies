@@ -4,14 +4,13 @@
       Friends
     </a>
   </div>
+  <h1>
   {{#if isYou}}
-  <div class="nav-button right">
-    <a href="/logout">
-      Logout
-    </a>
-  </div>
+    Your Uglies
+  {{else}}
+    {{user.username}}'s Uglies
   {{/if}}
-  <h1>{{title}}</h1>
+  </h1>
 </div>
 <div class="container">
   {{#if isYou}}
@@ -30,7 +29,9 @@
   </a>
   {{else}}
     {{#if isYou}}
-      <p class="onboard">You don't have any uglies yet! <br/><br/> Click the camera button below to create your first one.</p>
+      <p class="onboard">You don't have any uglies yet! <br/><br/>Tap the camera button below to create your first one.</p>
+    {{else}}
+      <p class="onboard">Doesn't look like {{user.username}} has any uglies yet :(</p>
     {{/if}}
   {{/uglies}}
 </div>

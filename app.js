@@ -98,8 +98,7 @@
   app.get('/signup', routes.users.signup);
   app.post('/signup', routes.users.postSignup);
   app.get('/logout', routes.users.logout);
-
-  app.get('/feed', isAuthenticated, routes.feed);
+  app.get('/profile', isAuthenticated, routes.profile);
   app.get('/uglie/add', isAuthenticated, routes.uglies.add);
   app.post('/uglie/add', isAuthenticated, routes.uglies.postAdd);
   app.get('/uglie/:id', isAuthenticated, routes.uglies.uglie);

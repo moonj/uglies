@@ -59,3 +59,19 @@ $('.uglie-name').val(name);
 $('#file-upload').click(function() {
   $('.photo-upload').click();
 });
+
+function readURL(input) {
+  if(input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#file-upload').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$('.photo-upload').change(function() {
+  readURL(this);
+});

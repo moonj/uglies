@@ -4,9 +4,8 @@
 <div class="container">
   <form class="form-add" action="/uglie/add" method="post" enctype="multipart/form-data">
     <input name="name" type="text" value="" class="uglie-name" readonly>
-    <input type="file" style="display: none;" class="photo-upload" name="photo" accept="image/*" capture="camera">
-    <br/>
-    <input type="button" id="file-upload" value="Upload a Selfie">
+    <input type="file" style="display: none;" class="photo-upload" name="photo" accept="image/*" capture="camera"> <br/>
+    <img src="/img/selfie.png" id="file-upload">
     <br/>
     <input id="submit" type="submit" value="Upload Image" name="submit">
   </form>

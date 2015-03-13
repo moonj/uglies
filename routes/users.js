@@ -49,14 +49,16 @@ exports.user = function(req, res) {
       res.redirect('/');
       return;
     }
-    if(user.username == req.user.username) res.redirect('/');
     var uglies = models.Uglie.find({user_id: req.params.id}).exec(function(err, uglies) {
       if(err) res.redirect('/');
+      var isYou;
+      if(user.username == req.user.username) isYou = true;
+      else isYou = false;
       var data = {
         title: user.username + '\'s Uglies',
         user: user,
         uglies: uglies,
-        isYou: false
+        isYou: isYou 
       }
       res.render('index', data);
     });

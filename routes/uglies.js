@@ -1,4 +1,5 @@
-var models = require('../models');
+var models = require('../models'),
+    mongoose = require('mongoose');
 
 exports.add = function(req, res) {
   res.render('add');
@@ -7,9 +8,10 @@ exports.add = function(req, res) {
 exports.postAdd = function(req, res) {
   console.log(req.files.photo.name);
   var uglie = new models.Uglie({
-    user_id: req.user.id,
+    _creator: req.user.id,
+    _owner: req.user.id,
     name: req.body.name,
-    likes: 0,
+    likes: [],
     path: req.files.photo.name
   });
   uglie.save(function(err) {
@@ -22,7 +24,7 @@ exports.postAdd = function(req, res) {
 exports.uglie = function(req, res) {
   models.Uglie.findById(req.params.id).exec(function(err, uglie) {
     if(err) res.redirect('/');
-    models.User.findById(uglie.user_id).exec(function(err, user) {
+    models.User.findById(uglie._owner).exec(function(err, user) {
       var itsYou = req.user.username == user.username;
     var data = {
       username: user.username,
@@ -39,14 +41,15 @@ exports.trade = function(req, res) {
 
 exports.deleteUglie = function(req, res) {
   models.Uglie.findById(req.params.id).remove().exec();
-  console.log('hello?');
   res.send('hey there!');
 }
 
 exports.like = function(req, res) {
-  console.log('eyy');
   models.Uglie.findById(req.params.id).exec(function(err, uglie) {
-    uglie.likes++;
+    for(var i = 0; i < uglie.likes.length; i++) {
+      if(uglie.likes[i] == req.user.id) return;
+    }
+    uglie.likes.push(req.user.id);
     uglie.save();
   });
   res.send('yay!');
