@@ -265,6 +265,7 @@ form {
     color: $brand;
     padding: 0px;
     margin: 0px;
+    float: left;
     font-weight: 600;
   }
 
@@ -296,8 +297,14 @@ form {
 
   #refresh {
     display: block;
+    float: right;
     padding: 0px;
-    font-size: 16px;
+    font-size: 14px;
+    margin: 0px;
+    padding: 4px;
+    background-color: $brand;
+    border-radius: 4px;
+    color: white;
   }
 }
 

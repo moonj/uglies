@@ -1,12 +1,10 @@
 <div class="header">
-  <div class="nav-button right" id="refresh">
-    New name
-  </div>
   <h1>Create an Uglie</h1>
 </div>
 <div class="container">
   <form class="form-add" action="/uglie/add" method="post" enctype="multipart/form-data">
     <input name="name" type="text" value="" class="uglie-name" readonly>
+    <p id="refresh">New name</p>
     <input type="file" style="display: none;" class="photo-upload" name="photo" accept="image/*" capture="camera"> <br/>
     <img src="/img/selfie.png" id="file-upload">
     <br/>
