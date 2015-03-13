@@ -17,7 +17,7 @@ exports.postAdd = function(req, res) {
     if(err) console.log(err);
     else console.log('uglie saved');
   });
-  res.redirect("/");
+  res.redirect("/user/" + req.user.id);
 }
 
 exports.uglie = function(req, res) {
