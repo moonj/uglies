@@ -242,6 +242,20 @@ form {
   text-decoration: none;
   display: block; }
 
+#confirm-trade {
+  width: 80%;
+  text-align: center;
+  border-radius: 4px;
+  position: absolute;
+  left: 10%;
+  padding: 14px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  top: 40%;
+  box-sizing: border-box;
+  opacity: 0.0;
+  transition: opacity 0.3s ease; }
+
 .onboard {
   width: 80%;
   text-align: center;

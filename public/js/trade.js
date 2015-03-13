@@ -24,7 +24,10 @@ $("#request").click(function(e) {
     dataType: 'json',
     data: JSON.stringify(data),
     success: function(msg) {
-      $('#back').click();
+      $('#confirm-trade').css('opacity', '1');
+      setTimeout(function() {
+        $('#back').click();
+      }, 2000);
     }
   })
 });

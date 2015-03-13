@@ -60,7 +60,7 @@ exports.postTrade = function(req, res) {
   request.save();
   var response = {
     status: 200,
-    success: 'yay'
+    success: 'Confirmed'
   }
   res.end(JSON.stringify(response));
 }

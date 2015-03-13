@@ -5,7 +5,7 @@ exports.login = function(req, res) {
 }
 
 exports.postLogin = function(req, res) {
-  res.redirect('/');
+  res.redirect('/user/' + req.user.id);
 }
 
 exports.logout = function(req, res) {
