@@ -90,8 +90,10 @@
     res.redirect('/login');
   }
 
+  //user routes
   app.get('/', isAuthenticated, routes.index);
-
+  app.get('/user/:id', routes.users.user);
+  app.get('/friends', routes.users.friends);
   app.get('/login', routes.users.login);
   app.post('/login', passport.authenticate(
     'local', {failureRedirect: '/login'}), routes.users.postLogin);
@@ -99,14 +101,19 @@
   app.post('/signup', routes.users.postSignup);
   app.get('/logout', routes.users.logout);
   app.get('/profile', isAuthenticated, routes.profile);
+
+  //uglie routes
   app.get('/uglie/add', isAuthenticated, routes.uglies.add);
   app.post('/uglie/add', isAuthenticated, routes.uglies.postAdd);
   app.get('/uglie/:id', isAuthenticated, routes.uglies.uglie);
   app.delete('/uglie/:id', routes.uglies.deleteUglie);
   app.post('/uglie/:id/like', routes.uglies.like);
-  
-  app.get('/user/:id', routes.users.user);
-  app.get('/friends', routes.users.friends);
+  app.get('/uglie/:id/trade', isAuthenticated, routes.uglies.trade);
+  app.post('/uglie/:id/trade', isAuthenticated, routes.uglies.postTrade);
+
+  //request routes
+  app.get('/request/:id', isAuthenticated, routes.uglies.request);
+  app.post('/request/:id', isAuthenticated, routes.uglies.postRequest);
 
   // RUN SERVER
 

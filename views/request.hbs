@@ -1,0 +1,36 @@
+<div class="header" id="{{request.id}}">
+  <div class="nav-button left">
+    <span id="decline">
+    Decline
+    </span>
+  </div>
+  <div class="nav-button right">
+    <span id="accept">
+    Accept
+    </span>
+  </div>
+  <div class="nav-button right">
+  </div>
+  <h1 class="owner-id" id="{{uglie._owner.id}}">
+    Trade with {{request._requester.username}}
+  </h1>
+</div>
+<div class="container">
+    <div class="uglie uglie-trade" id="{{uglie.id}}">
+      <h2>{{request._requested_uglie.name}}</h2>
+      <img src="/uploads/{{request._requested_uglie.path}}">
+    <p>Likes: {{request._requested_uglie.likes.length}}</p>
+    </div>
+  <div class="trade-list">
+    <h3>Uglies offered</h3>
+  {{#request._offer}}
+    <div class="uglie tradeable" id="{{this.id}}">
+      <h2>{{this.name}}</h2>
+      <img src="/uploads/{{this.path}}">
+      <p>{{this.likes.length}} Likes</p>
+    </div>
+  {{/request._offer}}
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/request.js"></script>

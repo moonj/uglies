@@ -1,8 +1,13 @@
 <div class="header">
+  <div class="nav-button left">
+    <span onclick="window.history.back()">
+      Back
+      </span>
+  </div>
   {{#if itsYou}}
   <h1>Your Uglie</h1>
   {{else}}
-  <h1>{{username}}'s Uglie</h1>
+  <h1>{{uglie._owner.username}}'s Uglie</h1>
   {{/if}}
 </div>
 <div class="container">
@@ -20,12 +25,20 @@
       Delete
     </div>
   {{else}}
-    <div class="button like">
-      Like
-    </div>
+    {{#if liked}}
+      <div class="button like liked">&#10003;
+        Liked
+      </div>
+    {{else}}
+      <div class="button like">
+        Like
+      </div>
+    {{/if}}
+    <a href="/uglie/{{uglie.id}}/trade">
     <div class="button trade">
       Trade
     </div>
+    </a>
   {{/if}}
   </div>
 </div>

@@ -5,12 +5,21 @@ var models        = require('../models');
 
 //newsfeed
 exports.index = function(req, res) {
-  var result = models.Uglie.find({}).sort({_id:1}).limit(10).populate('_owner _creator', 'username').exec(function(err, result) {
-    var data = {
-      feedItems: result
-    };
-    console.log(result);
-    res.render('feed', data);
+  var result = models.Uglie.find({}).sort({_id:1}).limit(10).populate('_owner _creator', 'username').exec(function(err, feed) {
+    models.Request.find({
+      _requestee: req.user.id
+    }).populate('_requester').exec(function(err, requests) { 
+      var pendingRequests = false;
+      if(requests.length >0) {
+        pendingRequests = true;
+      }
+      var data = {
+        feedItems: feed,
+        pendingRequests: pendingRequests,
+        requests: requests
+      };
+      res.render('feed', data);
+    });
   });
 }
 

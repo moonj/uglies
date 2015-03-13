@@ -19,6 +19,16 @@
         <img src="/img/camera.png">
     </div>
   </a>
+  {{#if pendingRequests}}
+  <div class="requests">
+    <h2>Trade requests</h2>
+    <ul>
+      {{#requests}}
+      <li id="{{this.id}}"><a href="/request/{{this.id}}">Request from <strong>{{this._requester.username}}</strong></a></li>
+      {{/requests}}
+    </ul>
+  </div>
+  {{/if}}
   {{#feedItems}}
   <a href="/uglie/{{this.id}}">
     <div class="uglie">

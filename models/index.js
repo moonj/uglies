@@ -43,8 +43,20 @@ var uglieSchema = mongoose.Schema({
 
 var Uglie = mongoose.model('Uglie', uglieSchema);
 
+var requestSchema = new mongoose.Schema({
+  _requester: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  _requestee: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  _requested_uglie: {type: mongoose.Schema.Types.ObjectId, ref: 'Uglie'},
+  _offer: [{type: mongoose.Schema.Types.ObjectId, ref: 'Uglie'}]
+});
+
+var Request = mongoose.model('Request', requestSchema);
+
 exports.userSchema = userSchema;
 exports.User = User;
 
 exports.uglieSchema = uglieSchema;
 exports.Uglie = Uglie;
+
+exports.requestSchema = requestSchema;
+exports.Request = Request;

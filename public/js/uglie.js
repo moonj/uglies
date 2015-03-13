@@ -10,7 +10,6 @@ $('.delete').click(function() {
 
 $('.like').click(function() {
   var id = $('.id').text();
-  console.log('eyyyyy');
   $.ajax({
     type: 'POST',
     url: '/uglie/' + id + '/like'}).
