@@ -28,9 +28,3 @@ exports.profile = function(req, res) {
   var id = req.user.id;
   res.redirect('/user/' + id);
 }
-
-exports.upload = function(req, res) {
-  console.log(req.body);
-  console.log(req.files);
-  res.redirect("/feed");
-}
