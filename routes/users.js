@@ -49,7 +49,9 @@ exports.user = function(req, res) {
       res.redirect('/');
       return;
     }
-    var uglies = models.Uglie.find({_owner: req.params.id}).exec(function(err, uglies) {
+    var uglies = models.Uglie.find({_owner: req.params.id})
+    .populate('_owner _creator')
+    .exec(function(err, uglies) {
       if(err) res.redirect('/');
       var isYou;
       if(user.username == req.user.username) isYou = true;

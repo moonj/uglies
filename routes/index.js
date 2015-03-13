@@ -5,7 +5,12 @@ var models        = require('../models');
 
 //newsfeed
 exports.index = function(req, res) {
-  var result = models.Uglie.find({}).sort({_id:1}).limit(10).populate('_owner _creator', 'username').exec(function(err, feed) {
+  var result = models.Uglie.find({})
+    .sort({_id:1})
+    .where('_owner').ne(req.user.id)
+    .limit(10)
+    .populate('_owner _creator', 'username')
+    .exec(function(err, feed) {
     models.Request.find({
       _requestee: req.user.id
     }).populate('_requester').exec(function(err, requests) { 

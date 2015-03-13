@@ -30,6 +30,9 @@
     <div class="uglie">
       <h2>{{this.name}}</h2>
       <img src="/uploads/{{this.path}}">
+      <p>Owned by {{this._owner.username}}</p>
+      <p>Created by {{this._creator.username}}</p>
+      <p>{{this.likes.length}} Likes</p>
     </div>
   </a>
   {{else}}
