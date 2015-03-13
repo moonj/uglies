@@ -57,7 +57,7 @@ var adjectives = [
   'Caustic',
   'Barbaric',
   'Cynical',
-  'Eraconian',
+  'Draconian',
   'Elated',
   'Fabulous',
   'Crackhead'
@@ -127,6 +127,8 @@ function readURL(input) {
 
     reader.onload = function(e) {
       $('#file-upload').attr('src', e.target.result);
+      console.log('eyy');
+      $('#submit').css("display", "block");
     }
 
     reader.readAsDataURL(input.files[0]);
